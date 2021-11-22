@@ -25,6 +25,7 @@ export default function Flashcard({ flashcard }) { // the argument is being dest
     return (
         <div
         className={` card ${flip ? 'flip' : ''}`} // static class of card, utilizing the flip variable for tenerary operation
+        style={{height: height}}
         onClick={()=> setFlip(!flip)}
         >
             <div className="front" ref={frontEl}>

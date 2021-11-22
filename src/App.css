@@ -24,7 +24,7 @@ margin: 0;
     flex-direction: column;
 }
 
-.form-group > label{
+.form-group > label {
     color: #777;
     font-size: .75rem;
     margin-bottom: .25rem;
@@ -40,7 +40,7 @@ margin: 0;
 }
 
 .btn:hover{
-    background-color: hsl(200, 100%, 40%);
+    background-color: hsl(200, 100%, lightness);
 }
 
 .card-grid{
