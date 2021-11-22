@@ -17,21 +17,25 @@ export default function Flashcard({ flashcard }) { // the argument is being dest
     }
 
     useEffect( setMaxHeight, [flashcard.question, flashcard.answer, flashcard.options]) // the height will recalulate anytime one of these change
+    useEffect(() => {
+        window.addEventListener('resize' , setMaxHeight); 
+        return () => window.removeEventListener('resize', setMaxHeight)
+    }, [])
 
     return (
         <div
         className={` card ${flip ? 'flip' : ''}`} // static class of card, utilizing the flip variable for tenerary operation
         onClick={()=> setFlip(!flip)}
         >
-            <div className="front" useRef={frontEl}>
+            <div className="front" ref={frontEl}>
                 {flashcard.question}
                 <div className="flashcard-options">
                     {flashcard.options.map(option => {
-                        return <div className="flashcard-option">{option}</div> //Loops through each option, option for each
+                        return <div className="flashcard-option" key={option}>{option}</div> //Loops through each option, option for each
                     })}
                 </div>
             </div>
-            <div className="back" useRef={backEl}>{flashcard.answer}</div>
+            <div className="back" ref={backEl}>{flashcard.answer}</div>
         </div>
     )
 }
